@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Carrito</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🛒 Carrito de Compras</h1>
+  </header>
+  <main class="carrito-pagina">
+    <ul id="lista-carrito"></ul>
+    <p id="total">Total: $0</p>
+    <button onclick="vaciarCarrito()">Vaciar carrito</button>
+  </main>
+
+  <script>
+    const listaCarrito = document.getElementById('lista-carrito');
+    const totalCarrito = document.getElementById('total');
+    let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+    function renderCarrito() {
+      listaCarrito.innerHTML = '';
+      let total = 0;
+      carrito.forEach((item, index) => {
+        const li = document.createElement('li');
+        li.innerHTML = `${item.nombre} - $${item.precio.toLocaleString()} <button onclick="eliminar(${index})">Eliminar</button>`;
+        listaCarrito.appendChild(li);
+        total += item.precio;
+      });
+      totalCarrito.textContent = `Total: $${total.toLocaleString()}`;
+    }
+
+    function eliminar(index) {
+      carrito.splice(index, 1);
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderCarrito();
+    }
+
+    function vaciarCarrito() {
+      carrito = [];
+      localStorage.setItem('carrito', JSON.stringify(carrito));
+      renderCarrito();
+    }
+
+    renderCarrito();
+  </script>
+</body>
+</html>
