@@ -1,129 +1,124 @@
 body {
-    font-family: 'Segoe UI', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-  }
-  
-  header {
-    background-color: #333;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  header h1 {
-    margin: 0;
-    font-size: 1.5rem;
-  }
-  
-  .buscador {
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  .buscador input,
-  .buscador select {
-    padding: 0.5rem;
-    font-size: 1rem;
-  }
-  
-  .carrito-icono {
-    position: relative;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: white;
-  }
-  
-  .carrito-icono span {
-    position: absolute;
-    top: -10px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 0.8rem;
-  }
-  
-  .productos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    padding: 2rem;
-  }
-  
-  .producto {
-    background-color: white;
-    border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    text-align: center;
-  }
-  
-  .producto img {
-    max-width: 100%;
-    border-radius: 8px;
-  }
-  
-  .producto h3 {
-    margin: 0.8rem 0 0.4rem;
-  }
-  
-  .producto p {
-    color: #444;
-    margin: 0.3rem 0 1rem;
-  }
-  
-  .producto button {
-    background-color: #008CBA;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .producto button:hover {
-    background-color: #005f7a;
-  }
-  
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background-color: rgba(0,0,0,0.5);
-  }
-  
-  .modal-contenido {
-    background-color: white;
-    margin: 10% auto;
-    padding: 2rem;
-    width: 90%;
-    max-width: 500px;
-    border-radius: 8px;
-  }
-  
-  .cerrar {
-    float: right;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  ul li {
-    margin: 0.5rem 0;
-    display: flex;
-    justify-content: space-between;
-  }
-  
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.buscador {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.buscador input, .buscador select {
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.carrito-icono {
+  position: relative;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+}
+
+.carrito-icono span {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+}
+
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.producto {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.producto img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.producto h3 {
+  margin: 0.8rem 0 0.4rem;
+}
+
+.producto p {
+  color: #444;
+  margin: 0.3rem 0 1rem;
+}
+
+.producto button {
+  background-color: #008CBA;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.producto button:hover {
+  background-color: #005f7a;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto; /* Esto habilita el scroll dentro del modal */
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal-contenido {
+  background-color: white;
+  margin: 5% auto;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+}
+
+.cerrar {
+  float: right;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  margin: 0.5rem 0;
+  display: flex;
+  justify-content: space-between;
+}
