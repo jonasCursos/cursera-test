@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tienda Online</title>
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
   <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+  <script src="https://www.paypal.com/sdk/js?client-id=sb&currency=USD"></script>
 </head>
 <body>
   <header>
@@ -22,7 +22,7 @@
         <option value="gorros">Gorros</option>
       </select>
     </div>
-    <div class="carrito-icono" onclick="abrirCarrito()">
+    <div class="carrito-icono" onclick="mostrarModalCarrito()">
       <i class="fas fa-shopping-cart"></i>
       <span id="contador-carrito">0</span>
     </div>
@@ -30,96 +30,18 @@
 
   <main class="productos" id="productos"></main>
 
-  <script>
-    const productos = [
-      {
-        nombre: 'Zapatillas Urbanas',
-        precio: 39990,
-        categoria: 'zapatos',
-        imagen: 'https://images.unsplash.com/photo-1618354691361-dc5872ef85b3?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Zapatos Cuero',
-        precio: 59990,
-        categoria: 'zapatos',
-        imagen: 'https://images.unsplash.com/photo-1584942532218-d042a6aeb3d0?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Botines Deportivos',
-        precio: 49990,
-        categoria: 'zapatos',
-        imagen: 'https://images.unsplash.com/photo-1606816272193-d8ab38aa17f4?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Polera Blanca',
-        precio: 14990,
-        categoria: 'poleras',
-        imagen: 'https://images.unsplash.com/photo-1542062703-3a6f2b160f18?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Polera Negra',
-        precio: 16990,
-        categoria: 'poleras',
-        imagen: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Polera Diseño',
-        precio: 18990,
-        categoria: 'poleras',
-        imagen: 'https://images.unsplash.com/photo-1616594039964-dbd622ff4685?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Gorro Invierno',
-        precio: 9990,
-        categoria: 'gorros',
-        imagen: 'https://images.unsplash.com/photo-1578687286623-5f70d8c70d90?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Gorro Deportivo',
-        precio: 11990,
-        categoria: 'gorros',
-        imagen: 'https://images.unsplash.com/photo-1605741014760-7c6c974f30da?auto=format&fit=crop&w=400&q=80'
-      },
-      {
-        nombre: 'Gorro Estilo',
-        precio: 12990,
-        categoria: 'gorros',
-        imagen: 'https://images.unsplash.com/photo-1606813909227-1fe1d8e11fc4?auto=format&fit=crop&w=400&q=80'
-      }
-    ];
+  <!-- Modal del carrito -->
+  <div id="modal-carrito" class="modal">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModalCarrito()">&times;</span>
+      <h2>🛒 Carrito</h2>
+      <ul id="lista-carrito"></ul>
+      <p id="total">Total: $0</p>
+      <button onclick="vaciarCarrito()">Vaciar carrito</button>
+      <div id="paypal-button-container"></div>
+    </div>
+  </div>
 
-    const contenedor = document.getElementById('productos');
-
-    productos.forEach(prod => {
-      const div = document.createElement('div');
-      div.className = 'producto';
-      div.setAttribute('data-categoria', prod.categoria);
-      div.innerHTML = `
-        <img src="${prod.imagen}" alt="${prod.nombre}">
-        <h3>${prod.nombre}</h3>
-        <p>$${prod.precio.toLocaleString()}</p>
-        <button onclick="agregarAlCarrito('${prod.nombre}', ${prod.precio})">Agregar</button>
-      `;
-      contenedor.appendChild(div);
-    });
-
-    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
-
-    function actualizarContador() {
-      document.getElementById('contador-carrito').textContent = carrito.length;
-      localStorage.setItem('carrito', JSON.stringify(carrito));
-    }
-
-    function agregarAlCarrito(nombre, precio) {
-      carrito.push({ nombre, precio });
-      actualizarContador();
-    }
-
-    function abrirCarrito() {
-      window.open('carrito.html', '_blank');
-    }
-
-    actualizarContador();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
