@@ -1,13 +1,13 @@
 const productos = [
-  { nombre: 'Zapatillas Urbanas', precio: 39990, categoria: 'zapatos', imagen: 'https://images.unsplash.com/photo-1618354691361-dc5872ef85b3?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Zapatos Cuero', precio: 59990, categoria: 'zapatos', imagen: 'https://images.unsplash.com/photo-1584942532218-d042a6aeb3d0?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Botines Deportivos', precio: 49990, categoria: 'zapatos', imagen: 'https://images.unsplash.com/photo-1606816272193-d8ab38aa17f4?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Polera Blanca', precio: 14990, categoria: 'poleras', imagen: 'https://images.unsplash.com/photo-1542062703-3a6f2b160f18?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Polera Negra', precio: 16990, categoria: 'poleras', imagen: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Polera Diseño', precio: 18990, categoria: 'poleras', imagen: 'https://images.unsplash.com/photo-1616594039964-dbd622ff4685?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Gorro Invierno', precio: 9990, categoria: 'gorros', imagen: 'https://images.unsplash.com/photo-1578687286623-5f70d8c70d90?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Gorro Deportivo', precio: 11990, categoria: 'gorros', imagen: 'https://images.unsplash.com/photo-1605741014760-7c6c974f30da?auto=format&fit=crop&w=400&q=80' },
-  { nombre: 'Gorro Estilo', precio: 12990, categoria: 'gorros', imagen: 'https://images.unsplash.com/photo-1606813909227-1fe1d8e11fc4?auto=format&fit=crop&w=400&q=80' }
+  { nombre: 'Zapatillas Urbanas', precio: 39990, categoria: 'zapatos', imagen: 'images/zapatillas.jpg' },
+  { nombre: 'Zapatos Cuero', precio: 59990, categoria: 'zapatos', imagen: 'images/zapatos-cuero.jpg' },
+  { nombre: 'Botines Deportivos', precio: 49990, categoria: 'zapatos', imagen: 'images/botines.jpg' },
+  { nombre: 'Polera Blanca', precio: 14990, categoria: 'poleras', imagen: 'images/polera-blanca.jpg' },
+  { nombre: 'Polera Negra', precio: 16990, categoria: 'poleras', imagen: 'images/polera-negra.jpg' },
+  { nombre: 'Polera Diseño', precio: 18990, categoria: 'poleras', imagen: 'images/polera-diseno.jpg' },
+  { nombre: 'Gorro Invierno', precio: 9990, categoria: 'gorros', imagen: 'images/gorro-invierno.jpg' },
+  { nombre: 'Gorro Deportivo', precio: 11990, categoria: 'gorros', imagen: 'images/gorro-deportivo.jpg' },
+  { nombre: 'Gorro Estilo', precio: 12990, categoria: 'gorros', imagen: 'images/gorro-estilo.jpg' }
 ];
 
 const contenedor = document.getElementById('productos');
@@ -16,7 +16,6 @@ const totalCarrito = document.getElementById('total');
 const modal = document.getElementById('modal-carrito');
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
-// Renderizar productos
 productos.forEach(prod => {
   const div = document.createElement('div');
   div.className = 'producto';
@@ -30,7 +29,6 @@ productos.forEach(prod => {
   contenedor.appendChild(div);
 });
 
-// Carrito
 function actualizarContador() {
   document.getElementById('contador-carrito').textContent = carrito.length;
   localStorage.setItem('carrito', JSON.stringify(carrito));
@@ -81,7 +79,6 @@ window.onclick = function (event) {
   }
 }
 
-// Filtros combinados
 function aplicarFiltros() {
   const texto = document.getElementById('buscador').value.toLowerCase();
   const categoria = document.getElementById('filtro').value;
@@ -89,10 +86,8 @@ function aplicarFiltros() {
   document.querySelectorAll('.producto').forEach(prod => {
     const nombre = prod.querySelector('h3').textContent.toLowerCase();
     const cat = prod.getAttribute('data-categoria');
-
     const matchText = nombre.includes(texto);
-    const matchCat = categoria === 'todos' || categoria === cat;
-
+    const matchCat = categoria === 'todos' || cat === categoria;
     prod.style.display = (matchText && matchCat) ? '' : 'none';
   });
 }
@@ -102,7 +97,6 @@ document.getElementById('filtro').addEventListener('change', aplicarFiltros);
 
 actualizarContador();
 
-// PayPal
 paypal.Buttons({
   createOrder: function (data, actions) {
     const total = carrito.reduce((sum, item) => sum + item.precio, 0) / 1000;
