@@ -1,11 +1,105 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tienda Online</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <h2>Curso jonas</h2>
+  <header>
+    <h1>Tienda de Ropa</h1>
+    <p>Zapatos • Poleras • Gorros</p>
+  </header>
+
+  <div class="controls">
+    <input type="text" id="buscador" placeholder="Buscar productos..." />
+    <select id="filtro">
+      <option value="todos">Todos</option>
+      <option value="zapatos">Zapatos</option>
+      <option value="poleras">Poleras</option>
+      <option value="gorros">Gorros</option>
+    </select>
+  </div>
+
+  <main class="container">
+    <div class="productos">
+
+      <!-- ZAPATOS -->
+      <div class="producto" data-categoria="zapatos">
+        <img src="https://images.unsplash.com/photo-1606813909227-1fe1d8e11fc4" alt="Zapato 1">
+        <h3>Zapatillas Urbanas</h3>
+        <p>$39990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="zapatos">
+        <img src="https://images.unsplash.com/photo-1606816272193-d8ab38aa17f4" alt="Zapato 2">
+        <h3>Zapatos Cuero</h3>
+        <p>$59990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="zapatos">
+        <img src="https://images.unsplash.com/photo-1616594039964-dbd622ff4685" alt="Zapato 3">
+        <h3>Botines Deportivos</h3>
+        <p>$49990</p>
+        <button>Comprar</button>
+      </div>
+
+      <!-- POLERAS -->
+      <div class="producto" data-categoria="poleras">
+        <img src="https://images.unsplash.com/photo-1584942532218-d042a6aeb3d0" alt="Polera 1">
+        <h3>Polera Blanca</h3>
+        <p>$14990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="poleras">
+        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb" alt="Polera 2">
+        <h3>Polera Negra</h3>
+        <p>$16990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="poleras">
+        <img src="https://images.unsplash.com/photo-1618354691361-dc5872ef85b3" alt="Polera 3">
+        <h3>Polera Diseño</h3>
+        <p>$18990</p>
+        <button>Comprar</button>
+      </div>
+
+      <!-- GORROS -->
+      <div class="producto" data-categoria="gorros">
+        <img src="https://images.unsplash.com/photo-1578687286623-5f70d8c70d90" alt="Gorro 1">
+        <h3>Gorro Invierno</h3>
+        <p>$9990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="gorros">
+        <img src="https://images.unsplash.com/photo-1542062703-3a6f2b160f18" alt="Gorro 2">
+        <h3>Gorro Deportivo</h3>
+        <p>$11990</p>
+        <button>Comprar</button>
+      </div>
+
+      <div class="producto" data-categoria="gorros">
+        <img src="https://images.unsplash.com/photo-1605741014760-7c6c974f30da" alt="Gorro 3">
+        <h3>Gorro Estilo</h3>
+        <p>$12990</p>
+        <button>Comprar</button>
+      </div>
+    </div>
+
+    <!-- Carrito de compras -->
+    <aside class="carrito">
+      <h2>🛒 Carrito</h2>
+      <ul id="lista-carrito"></ul>
+      <p id="total">Total: $0</p>
+    </aside>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
