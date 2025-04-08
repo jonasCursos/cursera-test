@@ -61,6 +61,24 @@ const totalCarrito = document.getElementById('total');
 const modal = document.getElementById('modal-carrito');
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
 
+// Filtro por categoría
+document.getElementById('filtro').addEventListener('change', () => {
+  const valor = document.getElementById('filtro').value;
+  document.querySelectorAll('.producto').forEach(prod => {
+    const categoria = prod.getAttribute('data-categoria');
+    prod.style.display = (valor === 'todos' || categoria === valor) ? '' : 'none';
+  });
+});
+
+document.getElementById('buscador').addEventListener('input', () => {
+  const texto = document.getElementById('buscador').value.toLowerCase();
+  document.querySelectorAll('.producto').forEach(prod => {
+    const nombre = prod.querySelector('h3').textContent.toLowerCase();
+    prod.style.display = nombre.includes(texto) ? '' : 'none';
+  });
+});
+
+
 function renderProductos() {
   productos.forEach(prod => {
     const div = document.createElement('div');
